@@ -357,7 +357,7 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
-$config['application_path'] = '/riskesdas_v3';
+$config['application_path'] = '/Riskesdas';
 
 
 /* End of file config.php */
