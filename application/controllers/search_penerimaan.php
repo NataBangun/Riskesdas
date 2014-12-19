@@ -2,29 +2,16 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-//include("main.php");
+include("main.php");
 
-class suratmasuk extends CI_Controller{
-    protected $data;
+class search_penerimaan extends main{
+    public $data;
     protected $field;
 
 
     public function __construct()   
     {
         parent::__construct();
-        
-        $arr_model=array(
-            'm_surat_masuk',
-            'm_pegawai',
-            'm_file'
-        );
-        
-        $arr_library=array(
-            'layout',
-            'form_validation',
-            'pagination_bas',
-            'notification'
-        );
         
 //        $arr_helper=array(
 //            'form',
@@ -35,34 +22,33 @@ class suratmasuk extends CI_Controller{
         $this->load->database();
         
 //        $this->load->helper($arr_helper);
-        $this->load->library($arr_library);
-        $this->load->model($arr_model);
+        $this->load->library('pagination_bas');
         
         //--pagination--array
         $this->field=array(
             array(
-                'field'=>'no_surat',
+                'field'=>'no_barcode',
                 'label'=>'No Surat',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
-                'field'=>'dari',
+                'field'=>'no_stiker',
                 'label'=>'Dari',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
-                'field'=>'perihal',
+                'field'=>'institusi_kode',
                 'label'=>'Perihal',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
-                'field'=>'date',
+                'field'=>'penelitian_kode',
                 'label'=>'Tanggal',
                 'attribut'=>array(
                     'class'=>'form-control'
@@ -73,7 +59,7 @@ class suratmasuk extends CI_Controller{
 
     public function index()
     {
-        $this->pagination_bas->set_controler('suratmasuk');
+        $this->pagination_bas->set_controler('search_penerimaan');
 	$this->pagination_bas->set_attr_input_page(array('class'=>'form-control'));
         $this->pagination_bas->set_pagination_type(2);
         $this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
@@ -81,20 +67,20 @@ class suratmasuk extends CI_Controller{
         //start---pagination
         $this->pagination_bas->set_attr_table('class="table table-bordered table-condensed table-hover table-striped"');
         $this->pagination_bas->set_field($this->field);
-        $this->pagination_bas->set_ajax_url($this->data['application_path'].'/suratmasuk/search');
+        $this->pagination_bas->set_ajax_url($this->data['application_path'].'/search_penerimaan/search');
         $this->data['link_pager']       = $this->pagination_bas->generate_link_pager();
 	$this->data['table_content']    = $this->pagination_bas->generate_table_content();
         $this->data['ajax_script']      = $this->pagination_bas->generate_ajax_script();
         $this->data['link_pagination']  = $this->pagination_bas->generate_link_pagination();
         //end---pagination
         
-        $this->layout->display('suratmasuk/list', $this->data);
+        $this->load->view('search_penerimaan', $this->data);
     }
     
     public function frm()
     {
         $this->data['arr_pegawai'] = $this->m_pegawai->select();
-        $this->layout->display('suratmasuk/frm', $this->data);
+        $this->layout->display('search_penerimaan', $this->data);
     }
        
     public function edit($id)
