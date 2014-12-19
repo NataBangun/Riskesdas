@@ -1,8 +1,8 @@
 
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="box">
+<div class="container-fluid" id="content-area">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="box">
                 <header>
                     <div class="icons">
                       <i class="fa fa-edit"></i>
@@ -42,4 +42,4 @@
             </div>
     </div>
 </div><!-- /.row -->
-
+</div>

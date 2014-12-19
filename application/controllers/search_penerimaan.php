@@ -12,6 +12,7 @@ class search_penerimaan extends main{
     public function __construct()   
     {
         parent::__construct();
+        parent::index();
         
 //        $arr_helper=array(
 //            'form',
@@ -60,7 +61,7 @@ class search_penerimaan extends main{
     public function index()
     {
         $this->pagination_bas->set_controler('search_penerimaan');
-	$this->pagination_bas->set_attr_input_page(array('class'=>'form-control'));
+		$this->pagination_bas->set_attr_input_page(array('class'=>'form-control'));
         $this->pagination_bas->set_pagination_type(2);
         $this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
         
@@ -69,7 +70,7 @@ class search_penerimaan extends main{
         $this->pagination_bas->set_field($this->field);
         $this->pagination_bas->set_ajax_url($this->datas['application_path'].'/search_penerimaan/search');
         $this->datas['link_pager']       = $this->pagination_bas->generate_link_pager();
-	$this->datas['table_content']    = $this->pagination_bas->generate_table_content();
+		$this->datas['table_content']    = $this->pagination_bas->generate_table_content();
         $this->datas['ajax_script']      = $this->pagination_bas->generate_ajax_script();
         $this->datas['link_pagination']  = $this->pagination_bas->generate_link_pagination();
         //end---pagination
