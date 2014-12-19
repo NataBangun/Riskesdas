@@ -5,7 +5,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 include("main.php");
 
 class search_penerimaan extends main{
-    public $data;
+    protected $datas;
     protected $field;
 
 
@@ -18,7 +18,7 @@ class search_penerimaan extends main{
 //            'url'
 //        );
         
-        $this->data['application_path'] = $this->config->item('application_path');
+        $this->datas['application_path'] = '/Riskesdas';
         $this->load->database();
         
 //        $this->load->helper($arr_helper);
@@ -67,14 +67,14 @@ class search_penerimaan extends main{
         //start---pagination
         $this->pagination_bas->set_attr_table('class="table table-bordered table-condensed table-hover table-striped"');
         $this->pagination_bas->set_field($this->field);
-        $this->pagination_bas->set_ajax_url($this->data['application_path'].'/search_penerimaan/search');
-        $this->data['link_pager']       = $this->pagination_bas->generate_link_pager();
-	$this->data['table_content']    = $this->pagination_bas->generate_table_content();
-        $this->data['ajax_script']      = $this->pagination_bas->generate_ajax_script();
-        $this->data['link_pagination']  = $this->pagination_bas->generate_link_pagination();
+        $this->pagination_bas->set_ajax_url($this->datas['application_path'].'/search_penerimaan/search');
+        $this->datas['link_pager']       = $this->pagination_bas->generate_link_pager();
+	$this->datas['table_content']    = $this->pagination_bas->generate_table_content();
+        $this->datas['ajax_script']      = $this->pagination_bas->generate_ajax_script();
+        $this->datas['link_pagination']  = $this->pagination_bas->generate_link_pagination();
         //end---pagination
-        
-        $this->load->view('search_penerimaan', $this->data);
+		$this->data['area_body'] = $this->load->view('search_penerimaan', $this->datas, true);
+        $this->load->view('layout', $this->data);
     }
     
     public function frm()
@@ -109,6 +109,7 @@ class search_penerimaan extends main{
 	//var_dump($data);
 	$data['application_path']= $this->data['application_path'];
         //$data['arr_pegawai'] = $this->m_pegawai->select();
+		
         $this->layout->display('suratmasuk/view', $data);
     }
 	
@@ -117,9 +118,9 @@ class search_penerimaan extends main{
         $this->pagination_bas->set_link_delete(true,'delete',array('class'=>'btn btn-default btn-sm'));
         $this->pagination_bas->set_link('suratmasuk/view','Baca',array('class'=>'btn btn-default btn-sm'));
         $this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
-        $this->pagination_bas->set_table_id('id_surat_masuk');
+        $this->pagination_bas->set_table_id('formpenerimaan_id');
         $this->pagination_bas->set_field($this->field);
-        $this->pagination_bas->set_table('v_suratmasuk');
+        $this->pagination_bas->set_table('v_formpenerimaan');
         $this->pagination_bas->set_paging($_POST,5,$page);
         $this->pagination_bas->generate_table_data();
         //end---pagination
