@@ -291,12 +291,12 @@ class CI_Pagination_Bas {
                         var dis1= (page == 1)?"disabled":"" ;
                         var dis2=(page == page_count)?"disabled":"" ;
                         var list="";
-
-                        list += "<li><a "+ dis1 +" href=\'#\' onclick=\"cari(1)\"><<</a></li>";
-                        list += "<li><a "+ dis1 +" href=\'#\' onclick=\"cari("+ (parseInt(page-1)) +")\"><</a></li>";
+						
+                        list += "<li class=\"btn\" onclick=\"cari(1)\"><a "+ dis1 +" href=\'#\' ><<</a></li>";
+                        list += "<li class=\"btn\" onclick=\"cari("+ (parseInt(page-1)) +")\"><a "+ dis1 +" href=\'#\' ><</a></li>";
                         '.$t.'
-                        list += "<li><a "+ dis2 +" href=\'#\' onclick=\"cari("+ ((page<page_count)?parseInt(page)+1:page) +")\">></a></li>";
-                        list += "<li><a "+ dis2 +" href=\"#\" onclick=\"cari("+ page_count +")\">>></a></li>";
+                        list += "<li  class=\"btn\" onclick=\"cari("+ ((page<page_count)?parseInt(page)+1:page) +")\"><a "+ dis2 +" href=\'#\' >></a></li>";
+                        list += "<li  class=\"btn\" onclick=\"cari("+ page_count +")\"><a "+ dis2 +" href=\"#\" >>></a></li>";
                         $(".pagination").html(list);
                         $(".pager").html(input_page);
                     }
