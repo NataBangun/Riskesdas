@@ -117,6 +117,13 @@ class search_penerimaan extends main{
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
+            ),
+            array(
+                'field'=>'jumaliquot',
+                'label'=>'Jumlah Aliquot',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
             )
         );
     }
