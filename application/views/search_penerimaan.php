@@ -20,19 +20,23 @@
 						<span>Search Penerimaan</span>
 							<div class="pull-right">
 								<div class="btn-toolbar">
-									<div class="btn-group">
-										<a href="<?php echo $application_path;?>/suratmasuk/frm" class="btn btn-default">Add</a> 
-									</div>
+									
 								</div>
 							</div>
                 </div>
 					
 				<div class="box-body box-body-nopadding">
 					<div class="highlight-toolbar">
-								<!--start--pagination-->
+						<div class="col-md-9" style="overflow-x: auto">	
+							<!--start--pagination-->
 								<?=$table_content;?>
 							<div class="bottom-table">
 								<div class="pull-right">
+								</div>
+							</div>
+								<?=$ajax_script?>
+                        <!--end--pagination-->
+						</div>
 									<div class="btn-toolbar">
 										<div class="btn-group">
 										   <ul class="pagination">
@@ -46,10 +50,6 @@
 										<?=$link_pager;?>
 										</div>
 									</div>
-								</div>
-							</div>
-								<?=$ajax_script?>
-                        <!--end--pagination-->
 					</div>
 				</div>
             </div>

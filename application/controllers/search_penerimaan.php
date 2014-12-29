@@ -29,28 +29,91 @@ class search_penerimaan extends main{
         $this->field=array(
             array(
                 'field'=>'no_barcode',
-                'label'=>'No Surat',
+                'label'=>'No Barcode',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
                 'field'=>'no_stiker',
-                'label'=>'Dari',
+                'label'=>'No Stiker',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
                 'field'=>'institusi_kode',
-                'label'=>'Perihal',
+                'label'=>'Kode Institusi',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
             ),
             array(
                 'field'=>'penelitian_kode',
-                'label'=>'Tanggal',
+                'label'=>'Kode Penelitian',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+			array(
+                'field'=>'umurART',
+                'label'=>'Umur',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'JK',
+                'label'=>'Jenis Kelamin',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'spesimen_kode',
+                'label'=>'Jenis Spesimen',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'site_kode',
+                'label'=>'Kode Site',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'simpanspesimen_id',
+                'label'=>'Simpan Spesimen',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'tgl_kirim',
+                'label'=>'Tanggal Kirim',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'tgl_ambil',
+                'label'=>'Tanggal Diambil',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'nama_pengirim',
+                'label'=>'Nama Pengirim',
+                'attribut'=>array(
+                    'class'=>'form-control'
+                    )
+            ),
+            array(
+                'field'=>'tgl_terima',
+                'label'=>'Tanggal Diterima',
                 'attribut'=>array(
                     'class'=>'form-control'
                     )
@@ -63,7 +126,7 @@ class search_penerimaan extends main{
         $this->pagination_bas->set_controler('search_penerimaan');
 		$this->pagination_bas->set_attr_input_page(array('class'=>'form-control'));
         $this->pagination_bas->set_pagination_type(2);
-        $this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
+        //$this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
         
         //start---pagination
         $this->pagination_bas->set_attr_table('class="table table-bordered table-condensed table-hover table-striped"');
@@ -116,9 +179,6 @@ class search_penerimaan extends main{
 	
     public function search($page){
         //start---pagination
-        $this->pagination_bas->set_link_delete(true,'delete',array('class'=>'btn btn-default btn-sm'));
-        $this->pagination_bas->set_link('suratmasuk/view','Baca',array('class'=>'btn btn-default btn-sm'));
-        $this->pagination_bas->set_link('suratmasuk/edit','Edit',array('class'=>'btn btn-default btn-sm'));
         $this->pagination_bas->set_table_id('formpenerimaan_id');
         $this->pagination_bas->set_field($this->field);
         $this->pagination_bas->set_table('v_formpenerimaan');
@@ -155,11 +215,13 @@ class search_penerimaan extends main{
                 'field' => 'nama_kegiatan',
                 'label' => 'Nama Kegiatan',
                 'rules' => 'required'
-            ),array(
+            ),
+			array(
                 'field' => 'diteruskan',
                 'label' => 'Diteruskan Kepada',
                 'rules' => 'required'
-            ),array(
+            ),
+			array(
                 'field' => 'date_pelaksanaan',
                 'label' => 'Tanggal Pelaksanaan',
                 'rules' => 'required'
